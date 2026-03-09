@@ -7,6 +7,14 @@
 - Create Browser Router > Routes > Route=/body ? Routechildre
 - Create an Outlet in Body Component
 - Create a Footer
+- created a Login
+
+- Installed redux toolkit to store user details
+- Configure store , Provider to app.js
+- create slice add user Reducer to store
+
+- Login and store user details in store
+- Navbar should update as soon as user login in
 
 Body
 Navbar
