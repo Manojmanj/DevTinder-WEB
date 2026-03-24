@@ -22,3 +22,7 @@ Route =/ => Feed
 Route =/login => Login
 Route =/connections => connections
 Route =/profile => profile
+
+Token validator and redirection
+Logout
+Profile
