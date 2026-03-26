@@ -29,3 +29,4 @@ Feed Page and Profile Update
 
 New Page - see all my connections
 New Page - see all my connections Requests
+Accept / reject connection request
