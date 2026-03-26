@@ -2,42 +2,41 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addConnections } from "../utils/connectionSlice";
+import { addRequests } from "../utils/requestSlice";
 
-const Connections = () => {
+const Request = () => {
   const dispatch = useDispatch();
-  const connections = useSelector((store) => store.connection);
-  const fetchConections = async () => {
+  const requests = useSelector((store) => store.requests);
+  const fetchRequests = async () => {
     try {
-      const res = await axios.get(BASE_URL + "/user/connections", {
+      const res = await axios.get(BASE_URL + "/user/requests/received", {
         withCredentials: true,
       });
 
-      dispatch(addConnections(res?.data?.data));
+      dispatch(addRequests(res?.data?.data));
     } catch (error) {
       console.log("error: ", error);
     }
   };
 
   useEffect(() => {
-    fetchConections();
+    fetchRequests();
   }, []);
+  if (!requests) return;
 
-  if (!connections) return;
-
-  if (connections.length === 0) return <h1>No connections Found</h1>;
+  if (requests.length === 0) return <h1>No Requests Found</h1>;
 
   return (
     <div className="text-center my-10">
-      <h1 className="font-bold text-3xl ">Connections</h1>
+      <h1 className="font-bold text-3xl ">Connections Requests</h1>
 
-      {connections.map((connection) => {
+      {requests.map((request) => {
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
-          connection;
+          request.fromUserId;
         return (
           <div
             key={_id}
-            className="flex mx-auto p-4 bg-base-300 rounded-lg w-1/2 my-5"
+            className="flex justify-between items-center mx-auto p-4 bg-base-300 rounded-lg w-2/3 my-5"
           >
             <div>
               <img
@@ -53,6 +52,10 @@ const Connections = () => {
               <p>{about}</p>
               {age && gender && <p>{age + " " + gender}</p>}
             </div>
+            <div>
+              <button className="btn btn-primary mx-2">Reject</button>
+              <button className="btn btn-secondary mx-2">Accept</button>
+            </div>
           </div>
         );
       })}
@@ -60,4 +63,4 @@ const Connections = () => {
   );
 };
 
-export default Connections;
+export default Request;
