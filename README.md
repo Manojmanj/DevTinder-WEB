@@ -26,3 +26,6 @@ Route =/profile => profile
 Token validator and redirection
 Logout
 Feed Page and Profile Update
+
+New Page - see all my connections
+New Page - see all my connections Requests
