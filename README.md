@@ -25,4 +25,4 @@ Route =/profile => profile
 
 Token validator and redirection
 Logout
-Profile
+Feed Page and Profile Update
